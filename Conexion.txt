@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace trabajo2
+{
+    internal class Conexion
+    {
+        SqlConnection con;//elemento de tipo
+        public SqlConnection conectar()
+        {
+            string cadena = ConfigurationManager.ConnectionStrings["cadena"].ConnectionString;// de esta manera extrallendo del archivo app.config  
+
+            con = new SqlConnection(cadena);//asociar la cadena de conexion
+            try
+            {
+                con.Open();//abrie la conexion 
+                return con;
+            }
+            catch (Exception ex)
+            {
+                return null;//si el metodo da un null quiere decir que no logro conectar 
+            }
+        }
+
+        public void cerrarConexion()//metodo para desconectar 
+        {
+            con.Close();
+        }
+    }
+}

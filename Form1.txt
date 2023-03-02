@@ -1,0 +1,43 @@
+namespace trabajo2
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        //validar 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (txtUsuario.Text == string.Empty)
+            {
+                MessageBox.Show("debe ingrasar un usuario");
+            }
+            else if (txtContrasena.Text == string.Empty)
+            {
+                MessageBox.Show("debe ingrasar una contraseña");
+            }
+            else
+            {
+                Usuario u = new Usuario();
+                u.setGetUsuario = txtUsuario.Text;
+                u.setGetContrasena = txtContrasena.Text;//Enviar los valores
+                u = UsuarioCAD.acceder(u);
+                if (u == null)//quiere decir que no encotro a nadie 
+                {
+                    MessageBox.Show("Datos de acceso incorretos");
+                    txtContrasena.Text = "";
+                    txtContrasena.Focus();
+                }
+                else
+                {
+                    Escritorio es =new Escritorio(u);// se va abrie el escritorio, pasar a la pantalla//imprima
+                    es.Show();
+                }
+            }
+
+
+        }
+    }
+    
+}

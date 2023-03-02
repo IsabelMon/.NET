@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace trabajo2
+{
+    internal class UsuarioCAD
+    {
+        //crear metodo
+        public static Usuario acceder(Usuario u)//recibir los datos del usuario y verificar si la informacion es correta
+        {
+            Conexion con = new Conexion();
+            string sql = "select * from usuario where usuario = '" + u.setGetUsuario + "' and dbo.desencriptar( contrasena) = '" + u.setGetContrasena + "'";
+            SqlCommand comando = new SqlCommand(sql, con.conectar()); // ejecutar la consulta
+            SqlDataReader reader = comando.ExecuteReader();//empezar a extraer informacion(ejeccutar el comando y leer el resultado)
+
+            if (reader.Read())//si logra keer la informacion de alguien fue qu en contro el dato
+            {
+                u = new Usuario();//inicializar el objeto
+                u.setGetNombre = reader["nombre"].ToString();//EXTRAER EL NOMBRE RETorNA EL nombre
+                u.setGetUsuario = reader["usuario"].ToString();
+                u.setGetContrasena = reader["contrasena"].ToString();
+                return u;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+    }
+}

@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace trabajo2
+{
+    public partial class Escritorio : Form
+    {
+        public Escritorio(Usuario u)
+        {
+            InitializeComponent();
+            lblUsuario.Text = u.setGetUsuario;
+            lblNombre.Text = u.setGetNombre;
+        }
+
+      //podemos ver la contraseña y el usuario imperso 
+
+        private void Escritorio_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

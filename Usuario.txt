@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace trabajo2
+{
+    public class Usuario // atributos
+    {
+        private string usuario;
+        private string contrasena;
+        private string nombre;
+
+       
+
+        public Usuario(string usuario, string contrasena, string nombre)//constructor
+        {
+            this.usuario = usuario;
+            this.contrasena = contrasena;
+            this.nombre = nombre;
+        }
+
+        public string setGetUsuario { get => usuario; set => usuario = value; }
+        public string setGetContrasena { get => contrasena; set => contrasena = value; }
+        public string setGetNombre { get => nombre; set => nombre = value; }//encapsular el campo
+    }
+}
